@@ -10,7 +10,19 @@ const io = require('socket.io')(server, {
     methods: ['GET', 'POST', 'PUT', 'DELETE']
   }
 });
-  
+
+
+const path = require('path');
+// Servir archivos estáticos desde /frontend
+app.use(express.static(path.join(__dirname, '../frontend')));
+// Ruta para servir agregar.html directamente
+app.get('/tareas/agregar', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/view/tareas/agregar.html'));
+});
+
+
+
+
 const connectDB = require('./database');
 const tasksRouter = require('./routes/tasks.routes');
 
