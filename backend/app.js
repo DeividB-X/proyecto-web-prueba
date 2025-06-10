@@ -12,9 +12,15 @@ const io = require('socket.io')(server, {
 });
 
 
+const cors = require('cors');
 const path = require('path');
+app.use(cors({
+  origin: '*'
+}));
+
 // Servir archivos estáticos desde /frontend
 app.use(express.static(path.join(__dirname, '../frontend')));
+
 // Ruta para servir agregar.html directamente
 app.get('/tareas/agregar', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/view/tareas/agregar.html'));
