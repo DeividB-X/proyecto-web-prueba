@@ -1,0 +1,200 @@
+/* Estilo base para cuerpo del documento y fondo completo */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fondo general con imagen */
+.fondo-tareas {
+  background-image: url('../img/Fondo_2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Reset general */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Tipografía y color base */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  padding: 20px;
+}
+
+/* Contenedor central con fondo semitransparente */
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Título principal */
+h1 {
+  text-align: center;
+  color: #2563eb;
+  margin-bottom: 20px;
+}
+
+/* Estilo del formulario */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+/* Campos del formulario */
+input,
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* Enfoque de campos (input/textarea) */
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* Botón genérico */
+button {
+  background-color: #2563eb;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Botón hover genérico */
+button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Lista de tareas */
+.lista-tareas {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Estilo de cada tarea */
+.lista-tareas li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9fafb;
+  border-left: 4px solid #2563eb;
+  padding: 12px 16px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Título de la tarea */
+.lista-tareas li h3 {
+  margin-bottom: 4px;
+  font-size: 1.1rem;
+}
+
+/* Descripción de la tarea */
+.lista-tareas li p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Botones dentro de tareas */
+.lista-tareas button {
+  margin-left: 8px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
+
+/* Botón Editar */
+.lista-tareas .editar,
+.btn-editar {
+  background-color: #facc15;
+  color: #111;
+}
+
+.lista-tareas .editar:hover,
+.btn-editar:hover {
+  background-color: #eab308;
+}
+
+/* Botón Eliminar */
+.lista-tareas .eliminar,
+.btn-eliminar {
+  background-color: #ef4444;
+  color: white;
+}
+
+.lista-tareas .eliminar:hover,
+.btn-eliminar:hover {
+  background-color: #dc2626;
+}
+
+/* Estilo general para tarea en lista */
+.tarea-item {
+  background-color: #ffffffcc;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título dentro de tarea */
+.tarea-item h3 {
+  margin: 0;
+  color: #333;
+}
+
+/* Descripción dentro de tarea */
+.tarea-item p {
+  color: #666;
+}
+
+/* Contenedor para los botones del formulario */
+.acciones-formulario {
+  margin-top: 10px;
+}
+
+/* Espaciado entre botones del formulario */
+.acciones-formulario button {
+  margin-right: 10px;
+}
+/* mensaje de error */
+.mensaje-error {
+  color: white;
+  background-color: #e74c3c;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+/* mensaje de exito */
+.mensaje-exito {
+  color: white;
+  background-color: #2ecc71;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  text-align: center;
+}
