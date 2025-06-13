@@ -14,6 +14,8 @@ const io = require('socket.io')(server, {
 
 const cors = require('cors');
 const path = require('path');
+
+// Configuración CORS para permitir peticiones desde cualquier origen
 app.use(cors({
   origin: '*'
 }));
@@ -21,9 +23,9 @@ app.use(cors({
 // Servir archivos estáticos desde /frontend
 app.use(express.static(path.join(__dirname, '../frontend')));
 
-// Ruta para servir agregar.html directamente
-app.get('/tareas/agregar', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/view/tareas/agregar.html'));
+// Ruta para servir index.html directamente
+app.get('/tareas/index', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/view/tareas/index.html'));
 });
 
 

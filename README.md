@@ -147,3 +147,22 @@
   - Render inició el despliegue automáticamente y se verificó la ausencia de errores en los logs.
   - **Capturas de pantalla**:
     - ![Logs de Despliegue en Render](./documentation/render-deploy-logs.png)
+
+## Paso 15: Implementar acceso directo a las vistas HTML en backend. 
+
+- **Descripción**: implementar en el backend/app.js para permitir el acceso directo a las vistas HTML.
+Asegura que el archivo index.html este disponible mediante una ruta accesible desde el navegador.
+- **Actualizar `app.js`**:
+  - Se añadieron Configuracion CORS para permitir peticiones al archivo, servir archivos estaticos y rutasv para servir index.html directamente.
+  - **Capturas de pantalla**:
+    - ![Implementar accesos directo HTML](./documentation/app-implementacion-servir-html.png)
+
+## Paso 16: Implementar acceso directo a las vistas HTML en backend. 
+
+- **Descripción**: implementar en el backend/app.js para permitir el acceso directo a las vistas HTML.
+Asegura que el archivo index.html este disponible mediante una ruta accesible desde el navegador.
+- **Actualizar `app.js`**:
+  - Se añadieron Configuracion CORS para permitir peticiones al archivo, servir archivos estaticos y rutasv para servir index.html directamente.
+  - **Capturas de pantalla**:
+    - ![Implementar accesos directo HTML](./documentation/app-implementacion-servir-html.png)
+    
