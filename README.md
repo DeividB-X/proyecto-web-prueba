@@ -234,9 +234,9 @@ Asegura que el archivo index.html este disponible mediante una ruta accesible de
 - **Prueba 2: Editar una Tarea**:
   -  Validar que se puede Editar una tarea correctamente.
   - **Capturas de pantalla**:
-    - ![Index editar](./documentation/ffrontend-js-main_js-index-editar-1.png)
+    - ![Index editar](./documentation/frontend-js-main_js-index-editar-1.png)
   - **Capturas de pantalla**:
-    - ![Index editar validacion](./documentation/ffrontend-js-main_js-index-editar-2.png)
+    - ![Index editar validacion](./documentation/frontend-js-main_js-index-editar-2.png)
 - **Prueba 3: Eliminar una Tarea**:
   -  Validar que se puede Eliminar una tarea correctamente
   - **Capturas de pantalla**:
