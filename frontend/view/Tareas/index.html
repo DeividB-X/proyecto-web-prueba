@@ -2,33 +2,46 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
+  <!-- Configura el diseño responsivo para que se adapte a diferentes dispositivos -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Agregar Tarea</title>
+  <!-- Enlace al archivo CSS para aplicar estilos personalizados -->
   <link rel="stylesheet" href="../public/css/style.css" />
 </head>
+  <!-- Aplica una clase de fondo al cuerpo de la página -->
 <body class="fondo-tareas">
   <div class="container">
     <h1 id="tituloFormulario">Agregar Tarea</h1>
 
-    <!-- Mensajes -->
+    <!-- Se muestra si hay un error al agregar la tarea -->
     <div id="mensajeError" class="mensaje-error" style="display: none;"></div>
+
+    <!-- Se muestra si la tarea se agrega correctamente -->
     <div id="mensajeExito" class="mensaje-exito" style="display: none;"></div>
 
+    <!-- Formulario para agregar una nueva tarea -->
     <form id="tareaFormulario" class="formulario">
       <input type="text" id="titulo" placeholder="Título de la tarea" required />
+      <!-- Campo de entrada para el título de la tarea -->
       <textarea id="descripcion" placeholder="Descripción de la tarea" rows="4" required></textarea>
-
+        <!-- Botones del formulario -->
       <div class="acciones-formulario">
+        <!-- Boton para enviar el formulario -->
         <button type="submit">Guardar</button>
+        <!-- Boton de cancelar  -->
         <button type="button" id="btnCancelar" style="display:none;">Cancelar</button>
       </div>
     </form>
-
+    <!-- Lista de tareas agregadas dinámicamente desde JS -->
     <ul id="listaTareas" class="lista-tareas"></ul>
   </div>
 
-  <!-- Socket.IO y JavaScript -->
+  <!-- Carga cliente de socket.io desde el backend en Render -->
   <script src="https://proyecto-web-prueba.onrender.com/socket.io/socket.io.js"></script>
+
+  <!-- Carga el archivo principal de JavaScript que contiene toda la lógica del frontend -->
   <script src="../js/main.js"></script>
 </body>
+
 </html>
+

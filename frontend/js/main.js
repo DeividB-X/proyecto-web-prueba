@@ -1,7 +1,17 @@
-/// Conexión con el backend vía socket.io
-const socket = io('https://proyecto-web-prueba.onrender.com');
+// URL base de la API del backend:
+// Esta constante permite centralizar la URL del servidor backend tanto para realizar peticiones HTTP como para establecer la conexión WebSocket.
+
+// Para desarrollo local, descomenta la siguiente línea y comenta la línea de producción.
+// const URL_API = 'http://localhost:3000';
+
+// Producción (Render): se utiliza cuando la aplicacion esta desplegada en la nube.
+const URL_API = 'https://proyecto-web-prueba.onrender.com';
+
+// Recibe eventos en tiempo real para sincronizar las tareas sin recargar la página.
+const socket = io(URL_API);
 
 // DOM Elements
+// Obtienen referencias a todos los elementos necesarios del HTML para manipularlos desde JavaScript.
 const tareaFormulario = document.getElementById('tareaFormulario');
 const tituloInput = document.getElementById('titulo');
 const descripcionInput = document.getElementById('descripcion');
@@ -12,10 +22,12 @@ const mensajeError = document.getElementById('mensajeError');
 const mensajeExito = document.getElementById('mensajeExito');
 
 // Estado
+// Variables auxiliares que indican si el usuario esta editando una tarea, y cual es su ID.
 let editando = false;
 let idActual = null;
 
 // Mostrar mensaje de error en pantalla
+// Muestra temporalmente un mensaje rojo si ocurre un error 
 function mostrarMensajeError(texto) {
   mensajeError.textContent = texto;
   mensajeError.style.display = 'block';
@@ -25,6 +37,7 @@ function mostrarMensajeError(texto) {
 }
 
 // Mostrar mensaje de éxito en pantalla
+// Muestra temporalmente un mensaje verde cuando se realiza una accion exitosa
 function mostrarMensajeExito(texto) {
   mensajeExito.textContent = texto;
   mensajeExito.style.display = 'block';
@@ -33,10 +46,11 @@ function mostrarMensajeExito(texto) {
   }, 3000);
 }
 
-// Obtener tareas al cargar la página
+// Obtener tareas al cargar la pagina
+// Cuando se carga la pagina, se hace una solicitud a la API para obtener todas las tareas guardadas.
 document.addEventListener('DOMContentLoaded', cargarTareas);
 
-// Escuchar envío de formulario
+// Escuchar envio de formulario
 tareaFormulario.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -62,7 +76,7 @@ tareaFormulario.addEventListener('submit', async (e) => {
   const tarea = { title: titulo, description: descripcion };
 
   if (editando) {
-    await fetch(`https://proyecto-web-prueba.onrender.com/api/tareas/${idActual}`, {
+    await fetch(`${URL_API}/api/tareas/${idActual}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(tarea),
@@ -73,7 +87,7 @@ tareaFormulario.addEventListener('submit', async (e) => {
     editando = false;
     idActual = null;
   } else {
-    await fetch('https://proyecto-web-prueba.onrender.com/api/tareas', {
+    await fetch(`${URL_API}/api/tareas`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(tarea),
@@ -96,7 +110,7 @@ btnCancelar.addEventListener('click', () => {
 // Cargar tareas desde el backend
 async function cargarTareas() {
   try {
-    const res = await fetch('https://proyecto-web-prueba.onrender.com/api/tareas');
+    const res = await fetch(`${URL_API}/api/tareas`);
     const tareas = await res.json();
     listaTareas.innerHTML = '';
     tareas.forEach(agregarTareaDOM);
@@ -106,6 +120,7 @@ async function cargarTareas() {
 }
 
 // Agregar una tarea al DOM
+// Crea visualmente una tarea dentro de la lista HTML y añade los botones de editar y eliminar
 function agregarTareaDOM(tarea) {
   const li = document.createElement('li');
   li.className = 'tarea-item';
@@ -133,7 +148,7 @@ function agregarTareaDOM(tarea) {
 
   // Botón eliminar
   li.querySelector('.btn-eliminar').addEventListener('click', async () => {
-    await fetch(`https://proyecto-web-prueba.onrender.com/api/tareas/${tarea._id}`, {
+    await fetch(`${URL_API}/api/tareas/${tarea._id}`, {
       method: 'DELETE',
     });
     mostrarMensajeExito('Tarea eliminada correctamente.');

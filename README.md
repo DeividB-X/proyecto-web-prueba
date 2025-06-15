@@ -157,12 +157,90 @@ Asegura que el archivo index.html este disponible mediante una ruta accesible de
   - **Capturas de pantalla**:
     - ![Implementar accesos directo HTML](./documentation/app-implementacion-servir-html.png)
 
-## Paso 16: Implementar acceso directo a las vistas HTML en backend. 
+## Paso 16: Crear `main.js`. 
 
-- **Descripción**: implementar en el backend/app.js para permitir el acceso directo a las vistas HTML.
-Asegura que el archivo index.html este disponible mediante una ruta accesible desde el navegador.
-- **Actualizar `app.js`**:
-  - Se añadieron Configuracion CORS para permitir peticiones al archivo, servir archivos estaticos y rutasv para servir index.html directamente.
+- **Descripción**: El archivo main.js se encarga de manejar toda la lógica de interacción entre el DOM, la API REST y los WebSockets.
+- **Crear conexion WebSocket**:
+  - Se establece una conexión con el servidor backend utilizando socket.io-client.
   - **Capturas de pantalla**:
-    - ![Implementar accesos directo HTML](./documentation/app-implementacion-servir-html.png)
-    
+    - ![Conexion socket](./documentation/frontend-js-main_js.png)
+- **Crear funcion cargar tareas desde el backend**:
+  - Esta función se ejecuta al iniciar la aplicación. Hace una solicitud GET al endpoint /api/tareas utilizando fetch.
+  - **Capturas de pantalla**:
+    - ![Creacion de funcion cargar tareas](./documentation/frontend-js-main_js-funcionCargarTareas.png)
+- **Función para agregar tarea visualmente**:
+  -  Permite mostrar una nueva tarea en la lista sin recargar la página.
+  - **Capturas de pantalla**:
+    - ![Creacion de funcion para agregar tarea](./documentation/frontend-js-main_js-funcionAgregarTareasDom.png)
+  - Se crea un elemento li con el nombre de la tarea y botones para editar y eliminar.
+  - **Capturas de pantalla**:
+    - ![Botones editar y eliminar](./documentation/frontend-js-main_js-funcionAgregarTareasDom_Edit-Deleted.png)
+- **Funciones para actualizar y eliminar del DOM**:
+  -  Estas funciones se encargan de modificar o eliminar visualmente una tarea en la interfaz cuando se detecta una actualización o eliminación desde el servidor.
+  - **Capturas de pantalla**:
+    - ![Creacion de funcion para actualizar y eliminar](./documentation/frontend-js-main_js-funciones-actualizar-eliminar.png)
+- **Escuchar eventos del servidor vía WebSocket**:
+  -  Se escuchan eventos emitidos por el backend cuando una tarea es agregada, actualizada o eliminada.
+  - **Capturas de pantalla**:
+    - ![WebSocket-conexion-Backend](./documentation/frontend-js-main_js-escuchar-eventos-desde-backend.png)
+
+## Paso 17: Interfaz de `index.html`. 
+
+- **Descripción**:Esta interfaz permite al usuario agregar nuevas tareas mediante un formulario, así como visualizar mensajes de éxito o error.
+- **Estructura del `index.html`**:
+  -  El archivo HTML Utiliza clases CSS , un formulario con campos validados, y zonas para mostrar mensajes al usuario.
+  - **Capturas de pantalla**:
+    - ![estructura index](./documentation/frontend-view-index_html-estructura.png)
+- **Formulario para ingresar tareas**:
+  - El formulario contiene un campo para el título, una descripción y botones para guardar o cancelar. Los campos son requeridos (required) para asegurar que el usuario no envíe tareas vacías.
+  - **Capturas de pantalla**:
+    - ![Index agregar tarea](./documentation/frontend-view-index_html-fromulario-ingresarTareas.png)
+- **Manejo de mensajes de éxito y error**:
+  -  Son contenedores ocultos que permiten mostrar visualmente según el resultado de la operación.
+  - **Capturas de pantalla**:
+    - ![Manejo de erroes](./documentation/frontend-view-index_html-ManejodeErrores.png)
+- **Escuchar eventos del servidor vía WebSocket**:
+  -  Se importa el cliente de Socket.IO directamente desde el servidor desplegado en Render, y se enlaza el archivo main.js para gestionar eventos.
+  - **Capturas de pantalla**:
+    - ![Conexion WebSocket y main.js](./documentation/frontend-view-index_html-conexionWebSocket-script.png)
+
+## Paso 18: Crear interfaz con CSS`. 
+
+- **Descripción**: Se aplica una hoja de estilos externa (style.css) para mejorar la presentación visual de la aplicación.
+- **Estilo base y fondo de la página**:
+  - **Capturas de pantalla**:
+    - ![Css base y fondo](./documentation/frontend-js-main_js-css-cuerpo-fondo.png)
+- **Contenedor del formulario**:
+  - **Capturas de pantalla**:
+    - ![Css contenedor](./documentation/frontend-js-main_js-css-contenedor.png)
+- **Manejo de mensajes de éxito y error**:
+  - **Capturas de pantalla**:
+    - ![Css Error y Exito](./documentation/frontend-js-main_js-css-error-exito.png)  
+- **Botones de editar y eliminar dentro de las tareas**:
+  - **Capturas de pantalla**:
+    - ![Css editar y eliminar ](./documentation/frontend-js-main_js-css-editar-eliminar.png) 
+
+## Paso 19: Pruebas de Funcionalidad. 
+
+- **Descripción**:Se realizaron pruebas para verificar el funcionamiento de la aplicación de tareas. Estas validaciones comprueban tanto la lógica del backend como la interacción en el frontend.
+- **Prueba 1: Crear una Nueva Tarea**:
+  -  Validar que se puede agregar una tarea correctamente.
+  - **Capturas de pantalla**:
+    - ![Index confirmacion](./documentation/frontend-js-main_js-index-confirmacion.png)
+- **Prueba 2: Editar una Tarea**:
+  -  Validar que se puede Editar una tarea correctamente.
+  - **Capturas de pantalla**:
+    - ![Index editar](./documentation/ffrontend-js-main_js-index-editar-1.png)
+  - **Capturas de pantalla**:
+    - ![Index editar validacion](./documentation/ffrontend-js-main_js-index-editar-2.png)
+- **Prueba 3: Eliminar una Tarea**:
+  -  Validar que se puede Eliminar una tarea correctamente
+  - **Capturas de pantalla**:
+    - ![Index eliminar](./documentation/frontend-js-main_js-index-eliminar.png)
+
+## Paso 20: Configurar la URL del Backend. 
+
+- **Descripción**:Para facilitar el cambio entre entornos de desarrollo local y produccion, se centralizo la URL base del backend en una constante URL_API. Esta constante se utiliza tanto para las peticiones HTTP (fetch) como para la conexión WebSocket.
+  - **Capturas de pantalla**:
+    - ![Configurar URL](./documentation/frontend-js-main_js-URL.png)
+  
