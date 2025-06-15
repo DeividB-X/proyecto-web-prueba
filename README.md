@@ -164,6 +164,10 @@ Asegura que el archivo index.html este disponible mediante una ruta accesible de
   - Se establece una conexión con el servidor backend utilizando socket.io-client.
   - **Capturas de pantalla**:
     - ![Conexion socket](./documentation/frontend-js-main_js.png)
+- **conexion Render**:
+  - La URL utilizada corresponde a la dirección pública del backend desplegado en Render.
+  - **Capturas de pantalla**:
+    - ![Conexion URL](./documentation/frontend-js-main_js-URL-render.png)
 - **Crear funcion cargar tareas desde el backend**:
   - Esta función se ejecuta al iniciar la aplicación. Hace una solicitud GET al endpoint /api/tareas utilizando fetch.
   - **Capturas de pantalla**:
