@@ -24,13 +24,8 @@ app.use(cors({
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Ruta para servir index.html directamente
-app.get('/tareas/index', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/view/tareas/index.html'));
-});
-
-// Ruta raiz
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/view/tareas/index.html'));
+  res.sendFile(path.join(__dirname, '../frontend/view/Tareas/index.html'));
 });
 
 const connectDB = require('./database');
