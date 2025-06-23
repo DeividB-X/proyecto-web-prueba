@@ -28,8 +28,10 @@ app.get('/tareas/index', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/view/tareas/index.html'));
 });
 
-
-
+// Ruta raiz
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/view/tareas/index.html'));
+});
 
 const connectDB = require('./database');
 const tasksRouter = require('./routes/tasks.routes');
